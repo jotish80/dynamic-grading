@@ -29,58 +29,104 @@
                         <button id="1stBtn">Calculate</button>
                     </div>
                     <div class="grade-box">
-                        <p id="grade">F</p>
+                        <p id="grade1">F</p>
                     </div>
                 </div>
 
                 <div class="row">
                     <label for="english">English</label>
                     <div class="marks-box">
-                        <input type="text" placeholder="Number you got" />
+                        <input id="engNumber" type="text" placeholder="Number you got" />
                     </div>
                     <div class="action-box">
-                        <button>Calculate</button>
+                        <button id="2ndBtn">Calculate</button>
                     </div>
                     <div class="grade-box">
-                        <p>F</p>
+                        <p id="grade2">F</p>
                     </div>
                 </div>
                 <div class="row">
                     <label for="ict">Science</label>
                     <div class="marks-box">
-                        <input type="text" placeholder="Number you got" />
+                        <input id="scNumber" type="text" placeholder="Number you got" />
                     </div>
                     <div class="action-box">
-                        <button>Calculate</button>
+                        <button id="3rdBtn">Calculate</button>
                     </div>
                     <div class="grade-box">
-                        <p>F</p>
+                        <p id="grade3">F</p>
                     </div>
                 </div>
             </div>
             <div class="footer">
-                <p>Total Mark: <strong>00</strong></p>
+                <p>Total Mark: <strong id="total">00</strong></p>
                 <div class="action-box">
-                    <button>Calculate</button>
+                    <button id="lastBtn">Calculate</button>
                 </div>
 
-                <p>Final Grade: <strong>F</strong></p>
+                <p id="finalGrade">Final Grade: <strong>F</strong></p>
             </div>
         </div>
     </div>
     <script>
-                 const banNumber = document.getElementById('banNumber');
-                 const gradeBtn = document.getElementById('grade');
-                 document.getElementById('1stBtn').addEventListener('click', function(){
-                      if(banNumber >= 80){
-                          gradeBtn = 'A';
-                      } else if(banNumber >=60){
-                          gradeBtn = 'B';
-                      } else if(banNumber <=40){
-                          gradeBtn = 'C';
-                      } else{
-                          gradeBtn = 'Fail';
-                      }
+                const totalGradeBtn = document.getElementById('total');
+                let finalGrade = "";
+                const lastBtn = document.getElementById('lastBtn').addEventListener('click', function(){
+                    const totalNumber = parseInt(banNumber + engNumber + scNumber).value;
+                    if(totalNumber >=180 && totalNumber <=240){
+                        finalGrade = 'A'
+                    } else if(totalNumber >= 120 && totalNumber <= 177){
+                        finalGrade = 'B'
+                    }else if(totalNumber >=0 && totalNumber < 120){
+                        finalGrade = 'F'
+                    }
+                    totalGradeBtn.innerHTML = finalGrade;
+                })
+               
+                
+                 const gradeBtn1 = document.getElementById('grade1');
+                 let grade1 = "";
+                 const firstBtn = document.getElementById('1stBtn').addEventListener('click', function(){
+                      
+                     const banNumber =parseInt( document.getElementById('banNumber').value);
+                     
+                     if(banNumber >= 60 && banNumber <= 80){
+                         grade1 = 'A';
+                     } else if(banNumber >= 40 && banNumber <= 59){
+                         grade1 = 'B';
+                     }else if(banNumber >= 0 && banNumber < 40){
+                         grade1 = 'F';
+                     }
+                     gradeBtn1.innerHTML = grade1;
+                       
+                 })
+                 const gradeBtn2 = document.getElementById('grade2');
+                 let grade2 = '';
+                 const secondBtn = document.getElementById('2ndBtn').addEventListener('click', function(){
+                     const engNumber = parseInt(document.getElementById('engNumber').value);
+                      
+                     if(engNumber >= 60 && engNumber <= 80){
+                         grade2 = 'A';
+                     } else if(engNumber >= 40 && engNumber <= 59){
+                         grade2 = 'B';
+                     }else if(engNumber >= 0 && engNumber < 40){
+                         grade2 = 'F';
+                     }
+                     gradeBtn2.innerHTML = grade2;
+                 })
+                 const gradeBtn3 = document.getElementById('grade3');
+                 let grade3 = '';
+                 const thirdBtn = document.getElementById('3rdBtn').addEventListener('click', function(){
+                     const scNumber = parseInt(document.getElementById('scNumber').value);
+                      
+                     if(scNumber >= 60 && scNumber <= 80){
+                         grade3 = 'A';
+                     } else if(scNumber >= 40 && scNumber <= 59){
+                         grade3 = 'B';
+                     }else if(scNumber >= 0 && scNumber < 40){
+                         grade3 = 'F';
+                     }
+                     gradeBtn3.innerHTML = grade3;
                  })
     </script>
 </body>
